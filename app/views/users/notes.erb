@@ -1,0 +1,14 @@
+  <h1>My notes</h1>
+
+  <div>
+    <% if @user_notes %>
+        <% @user_notes.each do |note| %>
+          <a href="/notes/<%=note.id%>"><%= note.title %></a><br>
+        <% end %>
+      <% else %>
+        <p>You have no notes!</p>
+    <%end%>
+  </div>
+  <p><a href="/notes/new">Create Note</a></p>
+  <p><a href="/notes">All Notes</a></p>
+

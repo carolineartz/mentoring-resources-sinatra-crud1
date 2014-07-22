@@ -1,0 +1,14 @@
+<!-- the convention is for the singular display of an object to be the 'show' view -->
+
+<h1><%=@note.title%></h1>
+<h2><%=@note.content%></h2>
+
+<div>
+   <a href="/notes/<%=@note.id %>/edit"> Edit</a>
+</div>
+
+
+<form action='/notes/<%= @note.id %>' method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit">delete note!</button>
+</form>
