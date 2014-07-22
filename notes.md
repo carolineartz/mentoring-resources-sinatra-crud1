@@ -29,6 +29,8 @@ class CreateCategories < ActiveRecord::Migration
     create_table :category do |t|
       t.string :title, null: false, length: 200
       t.string :description, null: false, lenght: 1000
+      
+      t.timestamps
     end
   end
 end
@@ -42,6 +44,8 @@ class CreatePosts < ActiveRecord::Migration
       t.string :description, null: false, length: 1000
       t.string :email, length: 100
       t.decimal :price, :precision => 10, :scale => 0
+      
+      t.timestamps
     end
   end
 end
