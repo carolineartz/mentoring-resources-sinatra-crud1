@@ -18,8 +18,8 @@
 
 ## Database
 
-`rake -T` - will get you all available rake tasks 
-`rake generate:model NAME=list` - this generates the list table
+`rake -T` - will get you all available rake tasks <br>
+`rake generate:model NAME=list` - this generates the list table<br>
 `rake generate:migration NAME=create_list` - this generates the migration that helps define the attributes of the table
 
 ## Model Migrations
@@ -49,13 +49,13 @@ end
 
 ## Migrate Tables
 
-`rake db:drop` - drop any existing tables premerge 
-`rake db:create` - create new tables 
-`rake db:migrate` - migrate in new table models
+`rake db:drop` - drop any existing tables premerge <br>
+`rake db:create` - create new tables <br>
+`rake db:migrate` - migrate in new table models 
 
 
 ## Seed Table with Data
-`rake db:seed` - to seed your database 
+`rake db:seed` - to seed your database <br>
 `rake console` - to load up irb loaded with your app configs 
 
 ```ruby
