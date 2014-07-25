@@ -2,19 +2,31 @@
 
 ## Helpful Hints
 
-1. Model: Singular vs. Plural 
+1. **Model: Singular vs. Plural**
 
 	When creating tables you must be very specific about how you name things. Since a model is a model of ONE instance of that table.
 
 	`Note` **model** is **singular** (there is one model of notes)<br> 
 	`Notes` **table** is **plural** (there are multiple note objects)
 
-2. Association: Singular vs. Plural
+2. **Association: Singular vs. Plural**
 
 	When creating tables you must be very specific about how you name things. Since a model is a model of ONE instance of that table.
 		
 	A **has_many** relationship should have many of an object (`category` has_many POSTS) 
 	A **belongs_to** relationship should have one object it belongs to (`post` belongs_to CATEGORY)
+	
+3. **Visualizing MVC-Example: Users**
+	![mvc-rails](http://goo.gl/XABwsk)
+	- The browser issues a request for the */users* URL.
+	- Rails routes */users* to the `index` action in the `Users` controller.
+	- The index action asks the `User` model to retrieve all users (`User.all`).
+	- The `User` model pulls all the users from the database.
+	- The `User` model returns the list of users to the controller.
+	- The controller captures the users in the `@users` variable, which is passed to the `index` view.
+	- The view uses embedded Ruby to render the page as HTML.
+	- The controller passes the HTML back to the browser.
+
 
 ## Database
 
@@ -28,7 +40,7 @@ class CreateCategories < ActiveRecord::Migration
   def change
     create_table :categories do |t|
       t.string :title, null: false, length: 200
-      t.string :description, null: false, lenght: 1000
+      t.string :description, null: false, length: 1000
       
       t.timestamps
     end
@@ -115,12 +127,68 @@ end
 - an update URL that will actually update the resource; for example, `/songs/2`
 - a delete URL that will remove a resource; for example, `/songs/2`
 
+***
+
+
+<table cellpadding="10">
+ <tbody><tr>
+   <th>HTTP request</th>
+   <th>URL</th>
+   <th>Action</th>
+   <th>Purpose</th>
+ </tr>	 		 	
+ <tr>
+    <td>GET</td>
+    <td>/users</td>
+    <td>index</td>
+    <td>page to list all users</td>
+  </tr>
+ <tr>
+    <td>GET</td>
+    <td>/users/1</td>
+    <td>show</td>
+    <td>page to show user with id 1</td>
+  </tr>
+ <tr>
+    <td>GET</td>
+    <td>/users/new</td>
+    <td>new</td>
+    <td>page to make a new user</td>
+  </tr>
+ <tr>
+    <td>POST</td>
+    <td>/users</td>
+    <td>create</td>
+    <td>create a new user</td>
+  </tr>
+ <tr>
+    <td>GET</td>
+    <td>/users/1/edit</td>
+    <td>edit</td>
+    <td>page to edit user with id 1</td>
+  </tr>
+ <tr>
+    <td>PATCH</td>
+    <td>/users/1</td>
+    <td>update</td>
+    <td>update user with id 1</td>
+  </tr>
+ <tr>
+    <td>DELETE</td>
+    <td>/users/1</td>
+    <td>destroy</td>
+    <td>delete user with id 1</td>
+  </tr>
+</tbody></table>
 
 
 
-
-
-
+<br><br>
+---
+References: <br>
+[How To Setup a Working Sinatra App](http://www.jonathanpeterwu.com/post/77394416493/how-to-setup-a-working-sinatra-app)<br>
+[Sinatra-Up and Running](http://it-ebooks.info/read/547/)<br>
+[MICROBLOG APP 3 - USERS RESOURCE](http://www.bogotobogo.com/RubyOnRails/RubyOnRails_MicroBlog_App_3_Users_Resource.php)
 
 
 

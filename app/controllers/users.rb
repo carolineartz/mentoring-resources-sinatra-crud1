@@ -10,7 +10,7 @@ post '/users/login' do
     session[:user_id] = @user.id
     redirect '/notes'
   else
-    redirect '/users/login'
+    erb :'users/sessions/new' #use erb vs. redirect to save form data from previous attempt
   end
 end
 
