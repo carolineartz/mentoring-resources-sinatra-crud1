@@ -26,7 +26,7 @@
 ```ruby
 class CreateCategories < ActiveRecord::Migration
   def change
-    create_table :category do |t|
+    create_table :categories do |t|
       t.string :title, null: false, length: 200
       t.string :description, null: false, lenght: 1000
       
@@ -39,7 +39,7 @@ end
 ```ruby
 class CreatePosts < ActiveRecord::Migration
   def change
-    create_table :post do |t|
+    create_table :posts do |t|
       t.string :title, null: false, length: 200
       t.string :description, null: false, length: 1000
       t.string :email, length: 100
