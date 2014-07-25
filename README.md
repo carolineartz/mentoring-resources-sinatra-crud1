@@ -27,14 +27,17 @@
     - The view uses embedded Ruby to render the page as HTML.
     - The controller passes the HTML back to the browser.
 
+***
 
-## Database
+## Creating RESTful Sinatra CRUD App
+
+### Database
 
 `rake -T` - will get you all available rake tasks <br>
 `rake generate:model NAME=list` - this generates the list table<br>
 `rake generate:migration NAME=create_list` - this generates the migration that helps define the attributes of the table
 
-## Model Migrations
+### Model Migrations
 ```ruby
 class CreateCategories < ActiveRecord::Migration
   def change
@@ -63,14 +66,14 @@ class CreatePosts < ActiveRecord::Migration
 end
 ```
 
-## Migrate Tables
+### Migrate Tables
 
 `rake db:drop` - drop any existing tables premerge <br>
 `rake db:create` - create new tables <br>
 `rake db:migrate` - migrate in new table models 
 
 
-## Seed Table with Data
+### Seed Table with Data
 `rake db:seed` - to seed your database <br>
 `rake console` - to load up irb loaded with your app configs 
 
@@ -95,6 +98,26 @@ post_categoryid = [1,2,3]
     )
 end
 ```
+
+```ruby
+require 'faker'
+
+5.times do
+  User.create(email: Faker::Internet.email,
+              password: 'password')
+end
+
+(100).times do
+  Note.create(title: Faker::Lorem.word,
+              content: Faker::Lorem.sentence(5),
+              user_id: User.pluck(:id).sample) #pluck is an active record method that
+end                                            #returns an array of only the value(s)
+                                               #corresponding to the specified attributes
+                                               #i.e., if you re-seed, this will sample from the pool of
+                                               #all users when randomply assigning the user_ids for the seeded posts
+```
+
+***
 
 ## RESTful Routes
 RESTful routes are a concept based around the idea that certain HTTP verbs (GET, PUTS, etc) can be mimicked in MVC server side applications based on the behavior it creates while interacting with the database.
